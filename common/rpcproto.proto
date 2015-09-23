@@ -1,0 +1,41 @@
+// This defines protocol for a simple server that lists files.
+//
+// See also the nanopb-specific options in fileproto.options.
+
+message MethodInfo {
+    required string name = 1;
+    required uint32 min_args = 2;
+    required uint32 max_args = 3;
+    required string description = 4;
+    required string arg_info = 5;
+}
+
+message RPCMessage {
+
+    enum message_type {
+        REQUEST = 0;
+        RESPONSE = 1;
+        LIST_METHODS_REQUEST = 2;
+        LIST_METHODS_RESPONSE = 3;
+        ERROR = 4;
+    }
+
+    required message_type type = 1;
+
+    repeated MethodInfo method = 2;
+
+    optional string name = 3;
+
+    repeated uint32 args = 4;
+
+    optional uint32 result = 6;
+
+    enum error_type {
+        INVALID_ARGS = 0;
+        INVALID_METHOD = 1;
+    }
+
+    optional error_type error = 7;
+
+}
+
