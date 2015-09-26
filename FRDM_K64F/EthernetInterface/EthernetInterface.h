@@ -20,7 +20,7 @@
 #ifndef ETHERNETINTERFACE_H_
 #define ETHERNETINTERFACE_H_
 
-#if !defined(TARGET_LPC1768) && !defined(TARGET_LPC4088) && !defined(TARGET_K64F)
+#if !defined(TARGET_LPC1768) && !defined(TARGET_LPC4088) && !defined(TARGET_LPC4088_DM) && !defined(TARGET_K64F) && !defined(TARGET_RZ_A1H) && !defined(TARGET_STM32F4)
 #error The Ethernet Interface library is not supported on this target
 #endif
 
@@ -80,11 +80,5 @@ public:
    */
   static char* getNetworkMask();
 };
-
-#include "TCPSocketConnection.h"
-#include "TCPSocketServer.h"
-
-#include "Endpoint.h"
-#include "UDPSocket.h"
 
 #endif /* ETHERNETINTERFACE_H_ */
