@@ -426,7 +426,7 @@ sys_thread_t sys_thread_new(const char *pcName,
     t->def.pthread = (os_pthread)thread;
     t->def.tpriority = (osPriority)priority;
     t->def.stacksize = stacksize;
-    t->def.stack_pointer = (unsigned char*)malloc(stacksize);
+    t->def.stack_pointer = (uint32_t*)malloc(stacksize);
     if (t->def.stack_pointer == NULL) {
       error("Error allocating the stack memory");
     }
